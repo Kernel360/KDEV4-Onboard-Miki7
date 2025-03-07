@@ -1,13 +1,13 @@
 package com.example.simpleboard.post.db;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.simpleboard.reply.db.ReplyEntity;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 
 @Getter
 @Setter
@@ -30,4 +30,7 @@ public class PostEntity {
     private String title;
     private String content;
     private LocalDateTime postedAt;
+
+    @Transient
+    private List<ReplyEntity> replyEntityList = List.of();
 }
