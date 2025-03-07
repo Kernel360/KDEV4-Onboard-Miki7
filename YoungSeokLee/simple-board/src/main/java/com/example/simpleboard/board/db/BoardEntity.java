@@ -1,10 +1,12 @@
 package com.example.simpleboard.board.db;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.simpleboard.post.db.PostEntity;
+import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.DialectOverride;
+import org.hibernate.annotations.Where;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,4 +24,11 @@ public class BoardEntity {
     private String boardName;
     private String status;
 
+    @OneToMany(
+            mappedBy = "board"
+    )
+    @Builder.Default
+    @Where(clause = "status = 'REGISTERED'")
+    @OrderBy(value = "id desc")
+    private List<PostEntity> postEntityList = List.of();
 }
