@@ -11,7 +11,7 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
 import java.io.IOException;
 
 @Slf4j
-@Component
+//@Component
 public class LoggerFilter implements Filter {
 
     @Override
